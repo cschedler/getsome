@@ -1,0 +1,33 @@
+<h1>A New Workout</h1>
+
+<%= form_with scope: :workout, url: workouts_path, local: true do |form| %>
+	<p>
+		<%= form.date_field :wrkt_date %>
+	</p>
+
+	<p>
+		<%= form.label :title %>
+		<%= form.text_field :title %>
+	</p>
+
+	<p>
+<% end %>
+
+<%= form_with scope: :movement, url: workouts_path, local: true do |form| %>
+	<p>
+		<%= form.label :movement %>
+		<%= form.text_field :movement %><br>
+		<%= form.label :set %>
+		<%= form.text_field :set %><br>
+		<%= form.label :rep %>
+		<%= form.text_field :rep %><br>
+		<%= form.label :weight %>
+		<%= form.text_field :weight %><br>
+		<%= form.label :duration %>
+		<%= form.text_field :duration %><br>
+	</p>
+
+	<p>
+	<%= form.submit %>
+	</p>
+<% end %>
