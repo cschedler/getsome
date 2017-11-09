@@ -1,9 +1,46 @@
 <p>
 	<strong>Date:</strong>
 	<%= @workout.wrkt_date %><br>
+	<%= "Title:" %>
 	<%= @workout.title %>
 </p>
 
-<p>
-#### need to show a table of the workout
-</p>
+<h1>Movements</h1>
+<% @workout.movements.each do |movement| %>
+	<p>
+		<%= movement.movement %>
+		<%= movement.set %>
+		<%= "x" %>
+		<%= movement.rep %>
+		<%= movement.weight %>
+		<%= "lbs" if movement.weight.present? %>
+		<%= movement.duration %>
+		<%= link_to'Edit', edit_workout_movement_path(movement) %>
+	</p>
+
+<% end %>
+
+<%= form_with(model: [ @workout, @workout.movements.build ], local: true) do |form| %>
+	<p>
+		<%= form.label :movement %>
+		<%= form.label :set %>
+		<%= form.label :rep %>
+		<%= form.label :weight %>
+		<%= form.label :duration %>
+	</p>
+
+	<p>
+		<%= form.text_field :movement %>
+		<%= form.text_field :set %>
+		<%= form.text_field :rep %>
+		<%= form.text_field :weight %>
+		<%= form.text_field :duration %>
+	</p>
+
+	<p>
+	<%= form.submit %>
+	</p>
+
+<% end %>
+
+<%= link_to 'Back', workouts_path %>

@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  wrkt_date: 2017-11-06
+  wrkt_date: 2017-11-08
   title: MyString
+  movement_number: 1
 
 two:
-  wrkt_date: 2017-11-06
+  wrkt_date: 2017-11-08
   title: MyString
+  movement_number: 1
