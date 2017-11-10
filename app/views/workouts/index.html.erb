@@ -5,7 +5,7 @@
 		<%= link_to 'New Workout', new_workout_path %>
 		<% end %>
 <% else %>
-	<% link_to 'Log In', login_path %>
+	<%= link_to 'Log In', login_path %>
 <% end %>
 
 <table>
@@ -35,11 +35,17 @@
 				<td align="center"><%= movement.duration %></td>
 			</tr>
 		<% end %>
-		<tr>
+		<% if logged_in? %>
+			<tr>
+				<td><br> </td>
+				<td><%= link_to'Edit', edit_workout_path(workout) %></td>
+				<td><%= link_to'Destroy', workout_path(workout), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+				<td><br> </td>
+			</tr>
+		<% else %>
+			<tr><br> </td>
+			<td><%= link_to 'Add My Workout', workouts_path %>
 			<td><br> </td>
-			<td><%= link_to'Edit', edit_workout_path(workout) %></td>
-			<td><%= link_to'Destroy', workout_path(workout), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-			<td><br> </td>
-		</tr>
+		<% end %>
 	<% end %>
 </table>
