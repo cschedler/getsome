@@ -9,13 +9,14 @@
 <% @workout.movements.each do |movement| %>
 	<p>
 		<%= movement.movement %>
-		<%= movement.set %>
-		<%= "x" %>
+		<%= movement.set if movement.rep.present?%>
+		<%= "x" if movement.rep.present? %>
 		<%= movement.rep %>
 		<%= movement.weight %>
 		<%= "lbs" if movement.weight.present? %>
 		<%= movement.duration %>
-		<%= link_to'Edit', edit_workout_movement_path(movement) %>
+		<%= link_to'Edit', edit_workout_movement_path(@workout, movement) %>
+		<%= link_to'Remove', workout_movement_path(@workout, movement), method: :delete %>
 	</p>
 
 <% end %>
@@ -43,4 +44,4 @@
 
 <% end %>
 
-<%= link_to 'Back', workouts_path %>
+<%= link_to 'Post', workouts_path %>

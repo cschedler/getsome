@@ -5,7 +5,7 @@ class CreateMovements < ActiveRecord::Migration[5.1]
       t.integer :set
       t.integer :rep
       t.integer :weight
-      t.time :duration
+      t.string :duration
 			t.references :workout, foreign_key: true
 
       t.timestamps

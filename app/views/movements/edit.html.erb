@@ -1,6 +1,6 @@
 <h1>Edit Movement</h1>
 
-<%= form_with(@workout, Movement.create) do |form| %>
+<%= form_for ([@workout, @movement]) do |form| %>
 	<p>
 		<%= form.label :movement %>
 		<%= form.label :set %>
@@ -16,6 +16,11 @@
 		<%= form.text_field :weight %>
 		<%= form.text_field :duration %>
 	</p>
+
+	<p>
+	<%= form.submit %>
+	</p>
+
 <% end %>
 
-<% link_to'Back', edit_workouts_path %>
+<%= link_to'Back', workout_path(@workout) %>

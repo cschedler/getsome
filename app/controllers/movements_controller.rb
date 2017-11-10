@@ -8,18 +8,27 @@ class MovementsController < ApplicationController
 	end
 
 	def edit
-		@movement = Movement.find(params[:id])
+		@workout = Workout.find(params[:workout_id])
+		@movement = @workout.movements.find(params[:id])
 	end
 
 	def update
-		@movement = Movement.find(params[:id])
-		@workout = @movement.workout
+		@workout = Workout.find(params[:workout_id])
+		@movement = @workout.movements.find(params[:id])
 
-		if @movement.update_attributes(params[:movement])
-			redirect_to edit_workouts_path
+		if @movement.update(movement_params)
+			redirect_to @workout
 		else
 			render 'edit'
 		end
+	end
+
+	def destroy
+		@workout = Workout.find(params[:workout_id])
+		@movement = @workout.movements.find(params[:id])
+		@movement.destroy
+
+		redirect_to @workout
 	end
 
 	private
