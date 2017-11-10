@@ -1,0 +1,17 @@
+<h1> User </h1>
+<table>
+	<tr>
+		<th> # </th>
+		<th> Name </th>
+		<th> Email </th>
+	</tr>
+
+	<tr>
+		<td><%=  @user.id %></td>
+		<td><%=  @user.name %></td>
+		<td><%= @user.email %></td>
+	</tr>
+</table>
+
+<%= link_to'Edit', edit_user_path %>
+<%= link_to'Back', users_path %>
