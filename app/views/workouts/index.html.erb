@@ -1,9 +1,8 @@
 <h1>Workouts</h1>
 
 <% if logged_in? %>
-		<% if @user.name.downcase = "collin" %>
-		<%= link_to 'New Workout', new_workout_path %>
-		<% end %>
+	<%= link_to 'New Workout', new_workout_path %>
+	<%= link_to 'Log Out', logout_path, method: :delete %>
 <% else %>
 	<%= link_to 'Log In', login_path %>
 <% end %>
@@ -40,12 +39,10 @@
 				<td><br> </td>
 				<td><%= link_to'Edit', edit_workout_path(workout) %></td>
 				<td><%= link_to'Destroy', workout_path(workout), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+				<td><br></td>
+				<td><%= link_to 'Add My Workout', workouts_path %>
 				<td><br> </td>
 			</tr>
-		<% else %>
-			<tr><br> </td>
-			<td><%= link_to 'Add My Workout', workouts_path %>
-			<td><br> </td>
 		<% end %>
 	<% end %>
 </table>
