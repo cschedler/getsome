@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
 		if @user.save
 			log_in @user
-			redirect_to user_path(@user)
+			redirect_to @user
 		else
 			render 'new'
 		end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		@user.destroy
 		
-		redirect_to users_path
+		redirect_to root_path
 	end
 
 	private

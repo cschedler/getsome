@@ -12,6 +12,35 @@
 		<td><%= @user.email %></td>
 	</tr>
 </table>
-
 <%= link_to'Edit', edit_user_path %>
-<%= link_to'Back', workouts_path %>
+<%= link_to'Back', user_path %>
+<p><br></p>
+<table>
+	<% @user.workouts.each do |workout| %>
+		<tr>
+			<th> Date: </th>
+			<th><%= workout.wrkt_date %></th>
+		</tr>
+		<tr>
+			<th><%= "Title:" if workout.title.present? %></th>
+			<th><%= workout.title if workout.title.present? %></th>
+		</tr>
+		<tr>
+			<th> Movement </th>
+			<th> Set </th>
+			<th> Rep </th>
+			<th> Weight </th>
+			<th> Duration </th>
+		</tr>
+
+		<% workout.movements.each do |movement| %>
+			<tr>
+				<td align="center"><% movement.movement %></td>
+				<td align="center"><% movement.set %></td>
+				<td align="center"><% movement.rep %></td>
+				<td align="center"><% movement.weight %></td>
+				<td align="center"><% movement.duration %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>

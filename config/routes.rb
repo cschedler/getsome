@@ -8,9 +8,10 @@ Rails.application.routes.draw do
 
   get 'main/index'
 
-	resources :users
-	resources :workouts do
-		resources :movements
+	resources :users do
+		resources :workouts do
+			resources :movements
+		end
 	end
 
 	root 'main#index'

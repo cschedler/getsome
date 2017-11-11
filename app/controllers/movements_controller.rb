@@ -4,7 +4,7 @@ class MovementsController < ApplicationController
 		@movement = @workout.movements.create(movement_params)
 
 		@movement.save
-		redirect_to workout_path(@workout)
+		redirect_to @workout
 	end
 
 	def edit

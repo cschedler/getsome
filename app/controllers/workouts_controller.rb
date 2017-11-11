@@ -1,42 +1,48 @@
 class WorkoutsController < ApplicationController
 
 	def show
-		@workout = Workout.find(params[:id])
+		@user = current_user
+		@workout = @user.workout.find(params[:id])
 	end
 	
 	def index
-		@workout = Workout.all
+		@user = current_user
+		@workout = @user.workout.all
 	end
 
 	def new
 	end
 
 	def edit
-		@workout = Workout.find(params[:id])
+		@user = current_user
+		@workout = @user.workout.find(params[:id])
 	end
 
 	def create
-		@workout = Workout.new(workout_params)
+		@user = current_user
+		@workout = @user.workout.new(workout_params)
 
 		@workout.save
-		redirect_to @workout
+		redirect_to @user
 	end
 
 	def update
-		@workout = Workout.find(params[:id])
+		@user = current_user
+		@workout = @user.workout.find(params[:id])
 
 		if @workout.update(workout_params)
-			redirect_to @workout
+			redirect_to @user
 		else
 			render 'edit'
 		end
 	end
 
 	def destroy
+		@user = current_user
 		@workout = Workout.find(params[:id])
 		@workout.destroy
 
-		redirect_to workouts_path
+		redirect_to @user
 	end
 
 	private

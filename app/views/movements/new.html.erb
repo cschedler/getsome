@@ -1,6 +1,6 @@
 <h1>New Movements</h1>
 
-<%= form_with scope: :movement, index: @workouts.movement_number.count, url: movements_path, local: true do |t| %>
+<%= form_with scope: :movement, url: movements_path, local: true do |t| %>
 	<p>
 		<%= form.label :movement %>
 		<%= form.label :set %>
