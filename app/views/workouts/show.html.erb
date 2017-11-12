@@ -15,8 +15,10 @@
 		<%= movement.weight %>
 		<%= "lbs" if movement.weight.present? %>
 		<%= movement.duration %>
-		<%= link_to 'Edit', edit_user_workout_movement_path(@user, @workout, movement) %>
-		<%= link_to 'Remove', user_workout_movement_path(@user, @workout, movement), method: :delete if movement.id.present? %>
+		<% if movement.id.present? %>
+			<%= link_to 'Edit', edit_user_workout_movement_path(@user, @workout, movement) %>
+			<%= link_to 'Remove', user_workout_movement_path(@user, @workout, movement), :method => :delete %>
+		<% end %>
 	</p>
 
 <% end %>

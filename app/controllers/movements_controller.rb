@@ -10,6 +10,7 @@ class MovementsController < ApplicationController
 		end
 	end
 
+
 	def edit
 
 		@workout = Workout.find(params[:workout_id])
@@ -31,10 +32,11 @@ class MovementsController < ApplicationController
 
 	def destroy
 		@workout = Workout.find(params[:workout_id])
+		@user = @workout.user
 		@movement = @workout.movements.find(params[:id])
 		@movement.destroy
 
-		redirect_to @workout
+		redirect_to [current_user, @workout]
 	end
 
 	private
