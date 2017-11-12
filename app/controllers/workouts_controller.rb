@@ -2,7 +2,8 @@ class WorkoutsController < ApplicationController
 
 	def show
 		@user = current_user
-		@workout = @user.workouts.find(params[:user_id])
+		@workout = @user.workouts.find(params[:id])
+		@movement = @workout.movements.build
 	end
 	
 	def index
@@ -11,27 +12,32 @@ class WorkoutsController < ApplicationController
 	end
 
 	def new
+		@user = current_user
+		@workout = @user.workouts.build
 	end
 
 	def edit
-		@user = current_user
+		@user = User.find(params[:user_id])
 		@workout = @user.workouts.find(params[:id])
 	end
 
 	def create
-		@user = current_user
+		@user = User.find(params[:user_id])
 		@workout = @user.workouts.create(workout_params)
 
-		@workout.save
-		redirect_to user_workout_path
+		if @workout.save
+			redirect_to([@user, @workout] )
+		else
+			render 'new'
+		end
 	end
 
 	def update
-		@user = current_user
+		@user = User.find(params[:user_id])
 		@workout = @user.workouts.find(params[:id])
 
 		if @workout.update(workout_params)
-			redirect_to @user
+			redirect_to [@user, @workout]
 		else
 			render 'edit'
 		end
@@ -40,13 +46,16 @@ class WorkoutsController < ApplicationController
 	def destroy
 		@user = current_user
 		@workout = @user.workouts.find(params[:id])
-		@workout.destroy
-
-		redirect_to @user
+		
+		if @workout.destroy
+			render 'index', alert: 'Deleted'
+		else
+			render 'index', alert: 'Not deleted'
+		end
 	end
 
 	private
 	def workout_params
-		params.require(:workout).permit(:wrkt_date, :title, :user_id)
+		params.require(:workout).permit(:wrkt_date, :title)
 	end
 end

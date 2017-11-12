@@ -3,21 +3,27 @@ class MovementsController < ApplicationController
 		@workout = Workout.find(params[:workout_id])
 		@movement = @workout.movements.create(movement_params)
 
-		@movement.save
-		redirect_to @workout
+		if @movement.save
+			redirect_to [current_user, @workout]
+		else
+			redirect_to [current_user, @workout]
+		end
 	end
 
 	def edit
+
 		@workout = Workout.find(params[:workout_id])
+		@user = @workout.user
 		@movement = @workout.movements.find(params[:id])
 	end
 
 	def update
 		@workout = Workout.find(params[:workout_id])
+		@user = @workout.user
 		@movement = @workout.movements.find(params[:id])
 
 		if @movement.update(movement_params)
-			redirect_to @workout
+			redirect_to [@user, @workout]
 		else
 			render 'edit'
 		end

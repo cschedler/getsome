@@ -1,6 +1,22 @@
 <h1>A New Workout</h1>
 
-<%= form_for :workout, url: user_workouts_path do |form| %>
+<%= form_for([@user, @workout], :url => user_workouts_path(@user)) do |form| %>
+
+<% if @workout.errors.any? %>
+
+    <div id="error_explanation">
+
+      <h2><%= pluralize(@workout.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+      <ul>
+        <% @workout.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
 	<p>
 		<%= form.date_field :wrkt_date %>
 	</p>

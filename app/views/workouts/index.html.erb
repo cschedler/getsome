@@ -34,8 +34,8 @@
 		<% if logged_in? %>
 			<tr>
 				<td><br> </td>
-				<td><%= link_to'Edit', edit_user_workout_path(workout) %></td>
-				<td><%= link_to'Destroy', user_workout_path(workout), method: :delete, data: {confirm: 'Are you sure?'} %></td>
+				<td><%= link_to 'Edit Workout', edit_user_workout_path(@user, workout) %></td>
+				<td><%= link_to 'Destroy Workout', user_workout_path(@user, workout), method: :delete, data: {confirm: 'Are you sure?'} %></td>
 				<td><br></td>
 				<td><%= link_to 'Add My Workout', user_workouts_path %>
 				<td><br> </td>

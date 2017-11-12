@@ -15,13 +15,13 @@
 		<%= movement.weight %>
 		<%= "lbs" if movement.weight.present? %>
 		<%= movement.duration %>
-		<%= link_to'Edit', edit_workout_movement_path(@workout, movement) %>
-		<%= link_to'Remove', workout_movement_path(@workout, movement), method: :delete %>
+		<%= link_to 'Edit', edit_user_workout_movement_path(@user, @workout, movement) %>
+		<%= link_to 'Remove', user_workout_movement_path(@user, @workout, movement), method: :delete if movement.id.present? %>
 	</p>
 
 <% end %>
 
-<%= form_with(model: [ @workout, @workout.movements.build ], local: true) do |form| %>
+<%= form_for([ @user, @workout, @workout.movements.build ]) do |form| %>
 	<p>
 		<%= form.label :movement %>
 		<%= form.label :set %>
@@ -43,5 +43,3 @@
 	</p>
 
 <% end %>
-
-<%= link_to 'Post', workouts_path %>
