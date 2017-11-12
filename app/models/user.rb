@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 	has_many :workouts, dependent: :destroy
-	
+	accepts_nested_attributes_for :workouts
 	
 	before_save { self.email = email.downcase }
 	validates :name, presence: true, length: { maximum: 20 }

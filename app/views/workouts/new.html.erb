@@ -1,6 +1,6 @@
 <h1>A New Workout</h1>
 
-<%= form_with scope: :workout, url: new_user_workout_path, local: true do |form| %>
+<%= form_for :workout, url: user_workouts_path do |form| %>
 	<p>
 		<%= form.date_field :wrkt_date %>
 	</p>
@@ -11,13 +11,9 @@
 	</p>
 
 	<p>
-	<%= form.label :movement_number %>
-	<%= form.text_field :movement_number %>
-
-	<p>
 	<%= form.submit %>
 	</p>
 
 <% end %>
 
-<%= link_to 'Back', user_workouts_path %>
+<%= link_to 'Back', root_path %>

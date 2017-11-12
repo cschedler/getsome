@@ -16,6 +16,7 @@
 <%= link_to'Back', user_path %>
 <p><br></p>
 <table>
+	<% @user = current_user %>
 	<% @user.workouts.each do |workout| %>
 		<tr>
 			<th> Date: </th>

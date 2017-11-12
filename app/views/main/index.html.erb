@@ -4,3 +4,10 @@
 <%= image_tag("workout", class: 'center-block') %>
 </div>
 </p>
+
+<p><br></p>
+<% if logged_in? %>
+	<% if current_user.name = "Collin" %>
+		<%= link_to "Create Workout", new_user_workout_path(current_user) %>
+	<% end %>
+<% end %>
