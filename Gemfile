@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.2.5'
+
 gem 'bcrypt', '3.1.11'
 
 git_source(:github) do |repo_name|

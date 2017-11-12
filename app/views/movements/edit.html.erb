@@ -1,6 +1,6 @@
 <h1>Edit Movement</h1>
 
-<%= form_for ([@workout, @movement]) do |form| %>
+<%= form_for([@user, @workout, @movement], :url => user_workout_movement_path(@user, @workout)) do |form| %>
 	<p>
 		<%= form.label :movement %>
 		<%= form.label :set %>

@@ -1,6 +1,22 @@
 <h1>Edit Workout</h1>
 
-<%= form_with(model: @workout) do |form| %>
+<%= form_for([@user, @workout], :url => user_workout_path(@user)) do |form| %>
+
+<% if @workout.errors.any? %>
+
+    <div id="error_explanation">
+
+      <h2><%= pluralize(@workout.errors.count, "error") %> prohibited
+        this post from being saved:</h2>
+      <ul>
+        <% @workout.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
 	<p>
 		<%= form.date_field :wrkt_date %>
 	</p>
@@ -11,13 +27,11 @@
 	</p>
 
 	<p>
-	<%= form.label :movement_number %>
-	<%= form.text_field :movement_number %>
-
-	<p>
 	<%= form.submit %>
 	</p>
 
 <% end %>
+
+
 
 <%= link_to 'Back', user_workouts_path %>
