@@ -1,13 +1,6 @@
 <p>
 <div class="text-center">
 	<H1>GETSOME</h1>
-<%= image_tag("workout", class: 'center-block') %>
+	<% - # <%= image_tag("workout", class: 'center-block') - %>
 </div>
 </p>
-
-<p><br></p>
-<% if logged_in? %>
-	<% if current_user.name = "Collin" %>
-		<%= link_to "Create Workout", new_user_workout_path(current_user) %>
-	<% end %>
-<% end %>
