@@ -20,4 +20,7 @@ module SessionsHelper
 		@current_user = nil
 	end
 
+	def is_admin?
+    	current_user.admin?
+  	end
 end
