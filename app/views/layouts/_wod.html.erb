@@ -1,0 +1,22 @@
+<h2>Workout Of the Day</h2>
+
+<p>
+	<strong>Date:</strong>
+	<%= @wod.wrkt_date %><br>
+	<%= "Title:" %>
+	<%= @wod.title %>
+</p>
+
+<h1>Movements</h1>
+<% @wod.movements.each do |movement| %>
+	<p>
+		<%= movement.movement %>
+		<%= movement.set if movement.rep.present?%>
+		<%= "x" if movement.rep.present? %>
+		<%= movement.rep %>
+		<%= movement.weight %>
+		<%= "lbs" if movement.weight.present? %>
+		<%= movement.duration %>
+	</p>
+
+<% end %>
